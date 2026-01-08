@@ -1,0 +1,17 @@
+// 比较两个文件
+auto diff = engine.compareFiles("file1.txt", "file2.txt");
+
+// 生成 unified 格式差异
+PatchGenerator generator;
+std::string patch = generator.generateUnified(diff, "file1.txt", "file2.txt");
+
+// 输出到控制台
+std::cout << patch << std::endl;
+
+// 获取统计信息
+auto stats = diff.getStatistics();
+std::cout << "添加: " << stats.added << " 行" << std::endl;
+std::cout << "删除: " << stats.removed << " 行" << std::endl;
+std::cout << "相同: " << stats.unchanged << " 行" << std::endl;
+
+return 0;
